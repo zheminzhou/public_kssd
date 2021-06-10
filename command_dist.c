@@ -709,8 +709,8 @@ void mco_cbd_co_dist(dist_opt_val_t *opt_val_in)
   dim_reduct_len = co_dstat_readin.dim_rd_len;
   char distf[PATHLEN];
   sprintf(distf, "%s/distance.out", distout_dir);
-  fprintf(logfp,"distance output to : %s\n",distf);
-  printf("distance output to : %s\n",distf);
+  //fprintf(logfp,"distance output to : %s\n",distf);
+  //printf("distance output to : %s\n",distf);
  dist_print_nobin(distout_dir,ref_seq_num, qry_seq_num, ref_ctx_ct_list, qry_ctx_ct_list,num_cof_batch,mcofname, cofname, opt_val_in);
   free(ref_ctx_ct_list);
   free(qry_ctx_ct_list);
@@ -864,8 +864,8 @@ void mco_cbd_koc_compatible_dist(dist_opt_val_t *opt_val_in)
      munmap(ctx_obj_ct + (size_t)b*num_cof_batch*mco_dstat_readin.infile_num, maplength);
    }
    free(fco_pos);
-   fprintf(logfp,"distance output to : %s\n",distf);
-   printf("distance output to : %s\n",distf);
+   //fprintf(logfp,"distance output to : %s\n",distf);
+   //printf("distance output to : %s\n",distf);
   koc_dist_print_nobin(distout_dir,ref_seq_num, qry_seq_num, ref_ctx_ct_list, qry_ctx_ct_list,num_cof_batch,mcofname, cofname);
  }
  else{
@@ -1167,7 +1167,7 @@ void dist_print_nobin (const char *distout_dir,unsigned int ref_num, unsigned in
  prt_line_t * prt_buf = malloc(ref_num * sizeof(prt_line_t));
  char distf[PATHLEN];
   sprintf(distf, "%s/distance.out", distout_dir);
- FILE *distfp = fopen(distf,"w") ;
+ FILE *distfp = stdout; //fopen(distf,"w") ;
   if( distfp == NULL ) err(errno,"dist_print_nobin():%s",distf);
  int num_mapping_distf = qry_num / num_cof_batch; int bnum_infile;
  print_ctrl_t outfield;
